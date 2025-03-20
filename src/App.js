@@ -7,6 +7,7 @@ import About from './components/About';
 import React, { useState, useEffect } from 'react';
 import Alert from './components/Alert';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GoogleAdSense from "./GoogleAdSense";
 
 function App() {
   const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
@@ -37,9 +38,9 @@ function App() {
   // Load advertisement script dynamically
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "//pl26165070.effectiveratecpm.com/1360ca8b864c6686ea5add0c676a6377/invoke.js";
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6901408017524149";
     script.async = true;
-    script.setAttribute("data-cfasync", "false");
+    script.crossOrigin = "anonymous"; // Equivalent to crossorigin="anonymous"
     document.body.appendChild(script);
 
     return () => {
@@ -64,7 +65,10 @@ function App() {
           </Switch>
 
           {/* Advertisement Container */}
-          <div id="container-1360ca8b864c6686ea5add0c676a6377" style={{ marginTop: "20px" }}></div>
+          {/* <div id="container-1360ca8b864c6686ea5add0c676a6377" style={{ marginTop: "20px" }}></div> */}
+
+          <GoogleAdSense />
+
         </div>
         <br />
         <Footer />
