@@ -7,7 +7,6 @@ import About from './components/About';
 import React, { useState, useEffect } from 'react';
 import Alert from './components/Alert';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import GoogleAdSense from "./GoogleAdSense";
 
 function App() {
   const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
@@ -38,9 +37,9 @@ function App() {
   // Load advertisement script dynamically
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6901408017524149";
+    script.src = "//pl26165070.effectiveratecpm.com/1360ca8b864c6686ea5add0c676a6377/invoke.js";
     script.async = true;
-    script.crossOrigin = "anonymous"; // Equivalent to crossorigin="anonymous"
+    script.setAttribute("data-cfasync", "false");
     document.body.appendChild(script);
 
     return () => {
@@ -55,6 +54,9 @@ function App() {
         <Alert alert={alert} />
 
         <div className="container my-3">
+          
+          {/* Advertisement Container */}
+          <div id="container-1360ca8b864c6686ea5add0c676a6377" style={{ marginTop: "20px" }}></div>
           <Switch>
             <Route exact path="/about">
               <About mode={mode} />
@@ -63,11 +65,6 @@ function App() {
               <TextForm showAlert={showAlert} heading="TextUtils" mode={mode} />
             </Route>
           </Switch>
-
-          {/* Advertisement Container */}
-          {/* <div id="container-1360ca8b864c6686ea5add0c676a6377" style={{ marginTop: "20px" }}></div> */}
-
-          <GoogleAdSense />
 
         </div>
         <br />
